@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="sk"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3interierr | Moderný interiérový dizajn</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#FF0060","background-light": "#f8f5f7",
+                        "background-dark": "#221017",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .hero-video-overlay {
+            background: linear-gradient(rgba(34, 16, 23, 0.7), rgba(34, 16, 23, 0.5));
+        }
+        .step-line::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 100%;
+            height: 2px;
+            background: #FF0060;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        .carousel-track {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; 
+        }
+        .carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+        .carousel-item {
+            scroll-snap-align: start;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200">
+<nav class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<a class="flex items-center gap-2" href="index.html">
+<img alt="3INTERIERR Logo" class="h-16 w-auto" src="img/logo.png"/>
+</a>
+</div>
+<div class="hidden md:flex items-center gap-8 font-medium">
+<a class="hover:text-primary transition-colors" href="sluzby.html">Služby</a>
+<a class="hover:text-primary transition-colors" href="portfolio.html">Portfólio</a>
+<a class="hover:text-primary transition-colors" href="cenník.html">Cenník</a>
+<a class="hover:text-primary transition-colors" href="blog.html">Blog</a>
+<a class="hover:text-primary transition-colors" href="kontakt.html">Kontakt</a>
+</div>
+<a href="kontakt.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-bold transition-all shadow-lg shadow-primary/20">
+                Získať cenovú ponuku
+            </a>
+</div>
+</nav>
+<header class="relative h-[85vh] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="Modern interior design process cinematic video" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5BNGlS9hLEAb6Foize25g9P6L_p4_M-1oozfDKXxEijJXdbhVdCvmxhhhvOsW81_aXwaIbUSFvZtvNlSbELXY6zhATN4xjZTkYz6zhYCCYjXlxuny_Gu6tLL9z6LCIfmkZtE7Qpjg4rAt5xkqhu1BYVnwpvaO63oY9PfllWf66MSSAYhSRXKnbpyQdfcGa_P3yGCUM_3h75vQU5ArsJHSLtrL7m7ZuHYbNYOQZon4ag-4uew454d8cPikjPYXKdWkfS_fDE0wPUvF"/>
+<div class="absolute inset-0 hero-video-overlay"></div>
+</div>
+<div class="relative z-10 max-w-4xl px-6 text-center text-white">
+<div class="flex items-center justify-center gap-4 mb-6">
+<span class="inline-block px-4 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary font-bold text-sm">
+                    ARCHITEKTÚRA &amp; INTERIÉR
+                </span>
+<span class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/10 border border-white/20 text-white font-semibold text-sm backdrop-blur-sm">
+<span class="material-icons text-base text-primary">verified</span>
+                    Viac ako 12 rokov skúseností
+                </span>
+</div>
+<h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-8">
+                Interiéry, ktoré definujú váš štandard.
+            </h1>
+<p class="text-xl text-slate-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                Pretvárame vaše vízie na precízne zrealizovanú skutočnosť. Od prvej skice až po posledný detail nábytku.
+            </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a href="kontakt.html" class="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all text-center">
+                    Začať projekt
+                </a>
+<a href="#proces" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all">
+<span class="material-icons">play_circle</span>
+                    Pozrieť náš proces
+                </a>
+</div>
+</div>
+</header>
+<section class="py-24 px-6 bg-white dark:bg-background-dark">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Čo ponúkame</h2>
+<h3 class="text-4xl font-extrabold dark:text-white">Komplexné riešenia interiérov</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="group p-8 rounded-2xl bg-background-light dark:bg-white/5 border border-transparent hover:border-primary/20 transition-all hover:shadow-xl">
+<div class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
+<span class="material-icons text-3xl">home</span>
+</div>
+<h4 class="text-2xl font-bold mb-4 dark:text-white">Byty a Domy</h4>
+<p class="mb-6 text-slate-600 dark:text-slate-300 leading-relaxed">
+Navrhneme interiér, ktorý bude vychádzať z vašich predstáv. Váš domov sa blysne v originálnom štýle s nadčasovým dizajnom a nádychom elegancie.
+</p>
+<a class="text-primary font-bold text-sm uppercase tracking-wide group-hover:underline" href="sluzby.html">Zistiť viac</a>
+</div>
+<div class="group p-8 rounded-2xl bg-background-light dark:bg-white/5 border border-transparent hover:border-primary/20 transition-all hover:shadow-xl">
+<div class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
+<span class="material-icons text-3xl">desk</span>
+</div>
+<h4 class="text-2xl font-bold mb-4 dark:text-white">Kancelárie</h4>
+<p class="mb-6 text-slate-600 dark:text-slate-300 leading-relaxed">
+Profesionálne vyzerajúce a štýlové kancelárske priestory s príjemnou atmosférou, ako pre prácu tak aj pracovné stretnutia s klientmi. Elegancia a funkcionalita v jednom s ohľadom na ergonómiu.
+</p>
+<a class="text-primary font-bold text-sm uppercase tracking-wide group-hover:underline" href="sluzby.html">Zistiť viac</a>
+</div>
+<div class="group p-8 rounded-2xl bg-background-light dark:bg-white/5 border border-transparent hover:border-primary/20 transition-all hover:shadow-xl">
+<div class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
+<span class="material-icons text-3xl">storefront</span>
+</div>
+<h4 class="text-2xl font-bold mb-4 dark:text-white">Komerčné priestory</h4>
+<p class="mb-6 text-slate-600 dark:text-slate-300 leading-relaxed">
+Reštaurácia, predajňa alebo kaviareň? Žiadny problém. Navrhneme a zariadíme. Priestory budú výnimočné nie len pre Vás, ale aj Vašich zákazníkov.
+</p>
+<a class="text-primary font-bold text-sm uppercase tracking-wide group-hover:underline" href="sluzby.html">Zistiť viac</a>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-slate-50 dark:bg-white/5" id="o-nas">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Dôvera</h2>
+<h3 class="text-4xl font-extrabold dark:text-white mb-6">Prečo si vybrať práve nás?</h3>
+<p class="text-slate-600 dark:text-slate-400 text-lg mb-8">
+                    Nejde len o pekné obrázky. Ponúkame partnerstvo, ktoré vás prevedie celým procesom od prvotnej myšlienky až po odovzdanie kľúčov.
+                </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">all_inclusive</span>
+</div>
+<div>
+<h5 class="font-bold dark:text-white">Komplexné riešenie A-Z</h5>
+<p class="text-sm text-slate-500">Od návrhu po realizáciu pod jednou strechou.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">handyman</span>
+</div>
+<div>
+<h5 class="font-bold dark:text-white">Overení remeselníci</h5>
+<p class="text-sm text-slate-500">Tím špecialistov, na ktorých sa dá spoľahnúť.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">architecture</span>
+</div>
+<div>
+<h5 class="font-bold dark:text-white">Precízna dokumentácia</h5>
+<p class="text-sm text-slate-500">Žiadne prekvapenia na stavbe vďaka detailným plánom.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<h5 class="font-bold dark:text-white">Individuálny prístup</h5>
+<p class="text-sm text-slate-500">Každý klient je pre nás unikátny partner.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -inset-4 bg-primary/20 rounded-xl blur-xl"></div>
+<img alt="Detailný záber na kvalitné materiály a dizajn" class="relative rounded-xl shadow-2xl w-full object-cover h-[400px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuSNa4E-vtWaHDkRtii5QPXgDNrXVVZQUEfflTug1e4NCQAV56r6AuTVJhUreYKmmhtDETNsBdKeJAzoMHo7Vgse-8FOLcxrS0QSS4uGie-iioKCJb97yoowvjkyp9VwdWZyE_RiDR1XqbttspC9Ly4AB0FJCW0-q-wlrZwtzZb5Bk3J6BeV_4J8Ux9U8NC_A-oCrOc4YRd9A0QvCTTCh9Uqd4sDmbnYh-JJG3R-gB9hNV1fCBwvNmHiASz5zd5482xHUt1tfyBd70"/>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 px-6 bg-white dark:bg-background-dark overflow-hidden">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12">
+<div>
+<h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Portfólio</h2>
+<h3 class="text-4xl font-extrabold dark:text-white">Ukážky našej práce</h3>
+</div>
+<a class="hidden md:flex items-center gap-2 font-bold text-primary hover:text-primary/80 transition-colors" href="portfolio.html">
+                Zobraziť všetky projekty <span class="material-icons">arrow_forward</span>
+</a>
+</div>
+<div class="carousel-track flex gap-6 pb-8">
+<div class="carousel-item min-w-[300px] md:min-w-[400px] relative group cursor-pointer">
+<div class="aspect-[4/5] rounded-xl overflow-hidden relative">
+<img alt="Project 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwmbe9YG6wVFxxY1TowvbM3fgq5NIUDjOX6u72W9UTTW5HvMXDqnKocjsL9O9LlaUQ1b0sWZxg5I92qpkUqfqh40ZhdDQ37y5IBq2t9ai7UbYsSDJS65RV5-avde6h4WzWzt7Nd5t9dP4pYYF53bkppXvLJYjZE0pjEcVq_l_kvxM6mopaTjK0gZAL0X-BdrYQ3IOFCyR6VYi0xOdNe2D4T6c1C5sacsuvs3ft9s0Krp8SfflydaF5AX23li0j74WB8DFfgbHNTyUG"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100"></div>
+<div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider border border-white/20">
+                        Vizualizácia
+                    </div>
+<div class="absolute bottom-6 left-6 text-white">
+<h4 class="text-xl font-bold mb-1">Rezidencia Koliba</h4>
+<p class="text-sm text-slate-300">Kompletný návrh interiéru</p>
+</div>
+</div>
+</div>
+<div class="carousel-track flex gap-6 pb-8 overflow-x-auto">
+<div class="carousel-item min-w-[300px] md:min-w-[400px] relative group cursor-pointer">
+<a href="portfolio.html#vizualizacie" class="block aspect-[4/5] rounded-xl overflow-hidden relative">
+<img alt="Vizualizácie" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="img/home-vizualizacia.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100"></div>
+<div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider border border-white/20">
+                        Galéria
+                    </div>
+<div class="absolute bottom-6 left-6 text-white">
+<h4 class="text-xl font-bold mb-1">Vizualizácie</h4>
+<p class="text-sm text-slate-300">Fotorealistické návrhy interiérov</p>
+</div>
+</a>
+</div>
+<div class="carousel-item min-w-[300px] md:min-w-[400px] relative group cursor-pointer">
+<a href="portfolio.html#realizacie" class="block aspect-[4/5] rounded-xl overflow-hidden relative">
+<img alt="Realizácie" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="img/home-realizacia.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100"></div>
+<div class="absolute top-4 right-4 bg-primary px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider border border-primary">
+                        Projekty
+                    </div>
+<div class="absolute bottom-6 left-6 text-white">
+<h4 class="text-xl font-bold mb-1">Realizácie</h4>
+<p class="text-sm text-slate-300">Realizácie na kľúč</p>
+</div>
+</a>
+</div>
+<div class="carousel-item min-w-[300px] md:min-w-[400px] relative group cursor-pointer">
+<a href="portfolio.html#nabytok" class="block aspect-[4/5] rounded-xl overflow-hidden relative">
+<img alt="Nábytok na mieru" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="img/home-nabytok.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100"></div>
+<div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-white uppercase tracking-wider border border-white/20">
+                        Výroba
+                    </div>
+<div class="absolute bottom-6 left-6 text-white">
+<h4 class="text-xl font-bold mb-1">Nábytok na mieru</h4>
+<p class="text-sm text-slate-300">Kvalitný nábytok podľa vašich predstáv</p>
+</div>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 px-6 bg-slate-50 dark:bg-background-dark/50 border-t border-slate-200 dark:border-white/5" id="proces">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Náš Pracovný Postup</h2>
+<h3 class="text-4xl font-extrabold dark:text-white">Od idey k dokonalej realizácii</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="relative group">
+<div class="flex flex-col items-center text-center p-8 rounded-2xl bg-white dark:bg-white/5 border border-transparent hover:border-primary/20 transition-all hover:shadow-xl shadow-sm">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+<span class="material-icons text-3xl">assignment</span>
+</div>
+<h4 class="text-xl font-bold mb-3 dark:text-white">1. Prípravná fáza</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Analýza potrieb, zameranie priestoru a definovanie rozpočtu.</p>
+</div>
+</div>
+<div class="relative group">
+<div class="flex flex-col items-center text-center p-8 rounded-2xl bg-white dark:bg-white/5 border border-transparent hover:border-primary/20 transition-all hover:shadow-xl shadow-sm">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+<span class="material-icons text-3xl">architecture</span>
+</div>
+<h4 class="text-xl font-bold mb-3 dark:text-white">2. Architektonická štúdia</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Koncepčné riešenie, dispozičné zmeny a 3D vizualizácie.</p>
+</div>
+</div>
+<div class="relative group">
+<div class="flex flex-col items-center text-center p-8 rounded-2xl bg-white dark:bg-white/5 border border-transparent hover:border-primary/20 transition-all hover:shadow-xl shadow-sm">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+<span class="material-icons text-3xl">description</span>
+</div>
+<h4 class="text-xl font-bold mb-3 dark:text-white">3. Projekt</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Technická dokumentácia pre remeselníkov a výber materiálov.</p>
+</div>
+</div>
+<div class="relative group">
+<div class="flex flex-col items-center text-center p-8 rounded-2xl bg-white dark:bg-white/5 border border-transparent hover:border-primary/20 transition-all hover:shadow-xl shadow-sm">
+<div class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+<span class="material-icons text-3xl">construction</span>
+</div>
+<h4 class="text-xl font-bold mb-3 dark:text-white">4. Realizácia</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400">Autorský dozor a odovzdanie hotového interiéru na kľúč.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 px-6 bg-white dark:bg-background-dark" id="tim">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Spoznajte nás</h2>
+<h3 class="text-4xl font-extrabold dark:text-white mb-4">Tím 3interierr</h3>
+<span class="block w-20 h-1 bg-slate-200 mx-auto rounded-full"></span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="text-center group">
+<div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-slate-100 dark:border-white/10 group-hover:border-primary transition-all">
+<img alt="Michaela Fejková" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIX-iaQbWkd4izQGjZH8fKQPhbriJmgdJjGIijB8B32URLaGE6z3xqLYSKOAkCpJriPcEqxENFV1yz5mJZPQ32y3b8fFU0sChhJAcx6ApzdhUBsbHFsGUsV_CnPddd5ghXdtec_XepEmxQQ69jXGLxd5DUlmKAXXZ1pg0VrccoQAcpF4RgGD3kaBMP-zM8lH9HLm7rnLTaG-UyEtzWl0SxJkaINbYcw9cSwNgOKsoe3bVcY5U37YSPGGYzknIKtqUPt-3TUKvgoLJR"/>
+</div>
+<h4 class="text-xl font-bold dark:text-white">Michaela Fejková</h4>
+<p class="text-sm text-primary font-medium uppercase tracking-wider mt-1">CEO, Projektový manažér</p>
+</div>
+<div class="text-center group">
+<div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-slate-100 dark:border-white/10 group-hover:border-primary transition-all">
+<img alt="Ing. Andrea Dziaková" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoJEjnbEIG9-wQG5FuN62_8OnHDpzpkslkkZYXUgSJWAl9ASQfgzLt6vX-1P6dsiaCuaK5c5BZoEZ42ueH6hDHZ92WEColIt7hSmOz2jnojt1y9yYpheP2rn8nNpdC4B_UU7A2OtjJ6OIeE2Y22e_x4WTGM3NVQVOPjrWd4kABj8RreuJ94r0gmFraeQzpYEqBM-h8mrHKXs7aEBHPX6AQtW4HXXLi_s1ctaxf7ckXrZES00CfVtqDGRA-w2FrmxF3aLAkNt-_Oojy"/>
+</div>
+<h4 class="text-xl font-bold dark:text-white">Ing. Andrea Dziaková</h4>
+<p class="text-sm text-primary font-medium uppercase tracking-wider mt-1">Administratíva</p>
+</div>
+<div class="text-center group">
+<div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-slate-100 dark:border-white/10 group-hover:border-primary transition-all">
+<img alt="Ing. arch. Barbora Balogová" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXmmSKxqm6IqAfzhhf3oXlbyFT1_K-3sP-m_hYY8AJ7rM3YJyZETHhjeqE2xmS2C1Qw75GVJ5z8m7QIyJ2VTZUZLrEqtCqAdZnn9g6MtWz5N9lfHb2FDQ1-ZIGcwz5Wg92n_P1T-45gRre9V8dBTMqGmOu37y3K6zbZmh_C5dQVOUDw-PbTIAW_dn2Wp04fkju7VyrYVv7yIqgi7eLf8FdZK2hcITuepKrWA_buOVjAPaNCv6BDCSzrYwl47rjvJwz-_o3uTloSNGB"/>
+</div>
+<h4 class="text-xl font-bold dark:text-white">Ing. arch. Barbora Balogová</h4>
+<p class="text-sm text-primary font-medium uppercase tracking-wider mt-1">Projektantka</p>
+</div>
+<div class="text-center group">
+<div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-slate-100 dark:border-white/10 group-hover:border-primary transition-all">
+<img alt="Ing. Laura Jurpakova" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxqAC3H9R7pGtZLJx-LPV8gqdZgOyb0KEwwYhl1rZmgdlIwKRup1gbHvuj3ohGQO3WtqBuJ3hzzGw2RiKWyh3wM-8__h-cP5JBE2xAeruuPvzcd_Oqyd4m189VLQ7N8LKrLISUaWA_c-N2fmAP7r72hZl7wcOa7ritbUkMCm3yvJEGjo2ZknjMU6jFHGdp2SUnAoRy15VKOHGn_hZ9AX0WZi5wmBKLfkO4Ka8SfzOTVMgEPTiF-9u6YLVj8vkMrGRzgXWY_ihM-01r"/>
+</div>
+<h4 class="text-xl font-bold dark:text-white">Ing. Laura Jurpakova</h4>
+<p class="text-sm text-primary font-medium uppercase tracking-wider mt-1">Projektantka</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 px-6 bg-background-light dark:bg-background-dark/50">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+<div>
+<h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Plánovanie</h2>
+<h3 class="text-4xl font-extrabold mb-6 dark:text-white leading-tight">Zistite predbežnú cenu alebo sa inšpirujte</h3>
+<p class="text-lg text-slate-600 dark:text-slate-400 mb-8">
+                    Náš inteligentný kalkulátor vám pomôže odhadnúť investíciu. Ešte nie ste rozhodnutí? Stiahnite si náš exkluzívny Lookbook najnovších trendov.
+                </p>
+<div class="space-y-4 mb-10">
+<div class="flex items-start gap-4">
+<span class="material-icons text-primary">check_circle</span>
+<p class="font-medium dark:text-slate-200">Okamžitý kvalifikovaný odhad ceny</p>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-icons text-primary">check_circle</span>
+<p class="font-medium dark:text-slate-200">Možnosť stiahnuť detailný PDF rozpis</p>
+</div>
+</div>
+<div class="p-6 bg-white dark:bg-white/5 rounded-2xl border border-primary/20 flex gap-6 items-center shadow-lg">
+<div class="hidden sm:block w-20 h-24 bg-slate-200 rounded overflow-hidden shadow-inner flex-shrink-0">
+<img alt="Cover lookbook" class="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkzirIGaslvlEIzEopVP9QXwOZM07xhdVVxlEDe0ec0-ygSwKI1z0yEQApYXQTd3wfMLzVBQEagRKlc14z3rgTVmRn1J0kl1BGMmUfyK5Cflpdy2P11YoHDW5Oeq3BagdqHEvQ-HYb9dhT1eRByAisTURhRoLjOK10vwfnXlvJ09gdfuztvRPB8T1ojxVe9tn5j3N8m9S8Z9wyqbQPuURoZxvSFbW1EKjw0DOmLp5LSCTlLC3OxKSQXno4eIwfPRnK-nLYlfUNf_ku"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-lg dark:text-white mb-1">Portfolio Lookbook 2024</h4>
+<p class="text-xs text-slate-500 mb-4">Výber TOP 50 realizácií a interiérových trendov.</p>
+<button class="text-sm font-bold text-primary flex items-center gap-2 hover:underline">
+<span class="material-icons text-sm">download</span> Stiahnuť PDF Zadarmo
+                    </button>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-white/5 p-8 rounded-2xl shadow-2xl border border-primary/10">
+<div class="space-y-8">
+<div>
+<label class="block text-sm font-bold mb-4 uppercase text-slate-500">Typ priestoru</label>
+<div class="grid grid-cols-2 gap-4">
+<button class="py-3 px-4 rounded-lg border-2 border-primary bg-primary/5 text-primary font-bold">Byt / Dom</button>
+<button class="py-3 px-4 rounded-lg border-2 border-slate-200 dark:border-white/10 hover:border-primary/50 transition-all font-bold">Kancelária</button>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-4">
+<label class="block text-sm font-bold uppercase text-slate-500">Rozloha (m²)</label>
+<span class="text-primary font-bold text-xl">85 m²</span>
+</div>
+<input class="w-full h-2 bg-slate-200 dark:bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+</div>
+<div>
+<label class="block text-sm font-bold mb-4 uppercase text-slate-500">Úroveň vybavenia</label>
+<select class="w-full p-4 bg-background-light dark:bg-white/5 border-none rounded-lg focus:ring-2 focus:ring-primary font-medium dark:text-white">
+<option>Standard (Kvalitné materiály)</option>
+<option>Premium (Dizajnové kúsky)</option>
+<option>Luxury (Atypická výroba na mieru)</option>
+</select>
+</div>
+<div class="pt-6 border-t border-slate-100 dark:border-white/10">
+<div class="flex justify-between items-center mb-6">
+<span class="text-lg font-bold dark:text-white">Odhadovaná cena:</span>
+<span class="text-3xl font-extrabold text-primary">12 400 €*</span>
+</div>
+<button class="w-full bg-primary text-white py-4 rounded-xl font-extrabold text-lg hover:shadow-lg hover:shadow-primary/30 transition-all">
+                            Poslať detailnú ponuku
+                        </button>
+<p class="text-center text-xs text-slate-400 mt-4 italic">*Cena je orientačná a zahŕňa prácu dizajnéra a základné materiály.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-primary">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+<div>
+<div class="text-4xl md:text-5xl font-extrabold text-white mb-2">500+</div>
+<div class="text-white/80 font-medium uppercase text-sm tracking-wider">Projektov</div>
+</div>
+<div>
+<div class="text-4xl md:text-5xl font-extrabold text-white mb-2">12</div>
+<div class="text-white/80 font-medium uppercase text-sm tracking-wider">Rokov praxe</div>
+</div>
+<div>
+<div class="text-4xl md:text-5xl font-extrabold text-white mb-2">100%</div>
+<div class="text-white/80 font-medium uppercase text-sm tracking-wider">Spokojnosť</div>
+</div>
+<div>
+<div class="text-4xl md:text-5xl font-extrabold text-white mb-2">45</div>
+<div class="text-white/80 font-medium uppercase text-sm tracking-wider">Ocenení</div>
+</div>
+</div>
+</section>
+<section class="py-24 px-6 bg-white dark:bg-background-dark">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div class="max-w-2xl">
+<h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Referencie</h2>
+<h3 class="text-4xl font-extrabold dark:text-white leading-tight">Čo hovoria naši klienti o spolupráci</h3>
+</div>
+<div class="flex gap-4">
+<button class="w-12 h-12 rounded-full border border-slate-200 dark:border-white/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+<span class="material-icons">chevron_left</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-slate-200 dark:border-white/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+<span class="material-icons">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="p-8 rounded-2xl bg-background-light dark:bg-white/5 border border-transparent">
+<div class="flex text-primary mb-6">
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-300 italic mb-8 leading-relaxed">
+                        "Spolupráca s 3interierr predčila naše očakávania. Ich prístup k detailu a schopnosť navrhnúť priestor, ktorý je funkčný aj krásny, je výnimočná."
+                    </p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Customer portrait woman smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg_a91IUT_Y6U5xvODilKah_ajniA5lsakNfivMB2AqCpOy9RiCxNLRlo_9nD7tNi2YDcbuSRYS9TRpRV3z8GyCOyTkt-gv3yk-EuUe90jWSFnHUkeODBhGzfqUgw_MH9VHqM7qXqmV8KJqFYfhgOpdNIlb637voAPAVeZJh0YwxEvR_kbnqDx-9n0a_CsYIOvpkIdlUJkT-LDOVArFjLj8P1GeXwPssK65KlFOSqCwGKpMP0E8yTyCrNvHqpZEtDqsTpsRWenEdu_"/>
+<div>
+<h5 class="font-bold dark:text-white">Martina S.</h5>
+<p class="text-xs text-slate-500 uppercase tracking-wide">Majiteľka bytu, Sky Park</p>
+</div>
+</div>
+</div>
+<div class="p-8 rounded-2xl bg-background-light dark:bg-white/5 border border-transparent">
+<div class="flex text-primary mb-6">
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-300 italic mb-8 leading-relaxed">
+                        "Projekt bol dodaný načas a v rámci dohodnutého rozpočtu. Oceňujem najmä technickú dokumentáciu, vďaka ktorej prebehla realizácia bez chýb."
+                    </p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Customer portrait man professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo1N1O4_3Rr4fyOfShfqZPXXTM2nBZbEJPxKPbMzrifCzHweVmOpj4vvqGdCJ_HlTj8UGqd-RKX2cbPysa4PqlblJoPWTSFPy5Btv4XqTOs8VQzlQqYmQiGK0AW5K9mPuckiW1so6BQgOQgcHl7kKy1i8hKkocvdVEF-MmxzhZRobjyHa7iFHw4wh-9YyLnls9lT7MVF0DD3Thls_c4xzNMdPmkoGwcPUyyJVCRWJQiM-0Ms7BLnz-N-gOPi3cAhgTEtOh3tPJwIcL"/>
+<div>
+<h5 class="font-bold dark:text-white">Jakub V.</h5>
+<p class="text-xs text-slate-500 uppercase tracking-wide">CEO, Creative Studio</p>
+</div>
+</div>
+</div>
+<div class="p-8 rounded-2xl bg-background-light dark:bg-white/5 border border-transparent">
+<div class="flex text-primary mb-6">
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+<span class="material-icons">star</span>
+</div>
+<p class="text-slate-600 dark:text-slate-300 italic mb-8 leading-relaxed">
+                        "Mali sme jasnú predstavu, ale tím 3interierr ju povýšil na úplne inú úroveň. Ich cit pre materiály a osvetlenie je v našom novom dome cítiť v každom rohu."
+                    </p>
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Customer portrait woman professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAty0aQMup9e9cfb2y0IqxXaEu1kUInou0tz9xn562hFdV4aMt3RUZq-61KG51n2nj7e6VjQS7sOnzR45w3d8wbcbQZc2sglJ-x8sJRvAUSTJ0E07jke0fLNyeYd_K5SbZ_CyAJjPx8oPNs8PcVPCo1hGvgNT_LV3sT0Fxu5SSOvdYpweKGHBdhZtNuqAPIoGJarDKJKnC-QRpHYe2okx-eymmVY1EZOI4UO5oUyIg41lPxWSSojr7Es7BLrqZvA-bD54iEiVxPQ95R"/>
+<div>
+<h5 class="font-bold dark:text-white">Lenka K.</h5>
+<p class="text-xs text-slate-500 uppercase tracking-wide">Rezidencia Záhorská</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-background-dark text-white pt-24 pb-12 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+<div class="lg:col-span-1">
+<div class="flex items-center gap-2 mb-8">
+<a class="flex items-center gap-2" href="index.html">
+<img alt="3INTERIERR Logo" class="h-12 w-auto" src="img/logo.png"/>
+</a>
+</div>
+<p class="text-slate-400 leading-relaxed mb-8">
+                        Štúdio interiérového dizajnu so zameraním na prémiové realizácie a moderné technologické riešenia.
+                    </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all" href="#">
+<i class="material-icons text-xl">facebook</i>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all" href="#">
+<i class="material-icons text-xl">photo_camera</i>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all" href="#">
+<i class="material-icons text-xl">business</i>
+</a>
+</div>
+</div>
+<div>
+<h6 class="font-bold text-lg mb-8">Služby</h6>
+<ul class="space-y-4 text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="sluzby.html">Návrh interiéru</a></li>
+<li><a class="hover:text-primary transition-colors" href="sluzby.html">3D Vizualizácie</a></li>
+<li><a class="hover:text-primary transition-colors" href="sluzby.html">Realizácia na kľúč</a></li>
+<li><a class="hover:text-primary transition-colors" href="sluzby.html">Autorský dozor</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-bold text-lg mb-8">Informácie</h6>
+<ul class="space-y-4 text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#o-nas">O nás</a></li>
+<li><a class="hover:text-primary transition-colors" href="portfolio.html">Portfólio</a></li>
+<li><a class="hover:text-primary transition-colors" href="blog.html">Blog &amp; Novinky</a></li> 
+<li><a class="hover:text-primary transition-colors" href="cenník.html">Cenník</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-bold text-lg mb-8">Newsletter</h6>
+<p class="text-slate-400 text-sm mb-6">Inšpirácie a tipy pre váš interiér priamo do schránky.</p>
+<form action="https://formspree.io/f/YOUR_FORM_ID" class="flex gap-2" method="POST">
+<input class="bg-white/5 border-none rounded-lg px-4 py-3 flex-grow focus:ring-1 focus:ring-primary text-sm" name="email" placeholder="Váš email" required="" type="email"/>
+<button class="bg-primary px-4 py-3 rounded-lg hover:bg-primary/90 transition-all text-white" type="submit">
+<span class="material-icons">send</span>
+</button>
+</form>
+</div>
+</div>
+<div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-slate-500 text-sm">© <span class="current-year">2024</span> 3interierr s.r.o. Všetky práva vyhradené.</p>
+<div class="flex gap-8 text-sm text-slate-500">
+<a class="hover:text-white transition-colors" href="#">Ochrana údajov</a>
+<a class="hover:text-white transition-colors" href="#">Obchodné podmienky</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+    document.querySelectorAll('.current-year').forEach(el => {
+        el.textContent = new Date().getFullYear();
+    });
+</script>
+</body></html>

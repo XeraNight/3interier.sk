@@ -53,26 +53,46 @@
             scroll-snap-align: start;
         }
     </style>
-  <script type="module" crossorigin src="./assets/navbar-NPbXZ63f.js"></script>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200" data-hero-page="true">
 <nav class="fixed top-0 w-full z-50 bg-background-dark text-white border-b border-white/10 shadow-md transition-all duration-300">
 <div class="w-full max-w-[95%] mx-auto px-6 h-28 flex items-center justify-between">
 <div class="flex items-center gap-2">
 <a class="flex items-center gap-2" href="index.html">
-<img alt="3INTERIERR Logo" class="h-[120px] w-auto" src="img/logo.png"/>
+<img alt="3INTERIERR Logo" class="h-[80px] md:h-[120px] w-auto transition-all duration-300" src="img/logo.png"/>
 </a>
 </div>
-<div class="hidden md:flex items-center gap-8 font-medium">
+<div class="hidden lg:flex items-center gap-8 font-medium">
 <a class="hover:text-primary transition-colors" href="sluzby.html">Služby</a>
 <a class="hover:text-primary transition-colors" href="portfolio.html">Portfólio</a>
 <a class="hover:text-primary transition-colors" href="cenník.html">Cenník</a>
 <a class="hover:text-primary transition-colors" href="blog.html">Blog</a>
 <a class="hover:text-primary transition-colors" href="kontakt.html">Kontakt</a>
 </div>
+<div class="hidden lg:block">
 <a href="kontakt.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-bold transition-all shadow-lg shadow-primary/20">
                 Získať cenovú ponuku
             </a>
+</div>
+<!-- Mobile Menu Button -->
+<button id="mobile-menu-btn" class="lg:hidden text-white hover:text-primary transition-colors p-2">
+    <span class="material-icons text-3xl">menu</span>
+</button>
+</div>
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-40 bg-background-dark/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col items-center justify-center space-y-8">
+    <button id="close-menu-btn" class="absolute top-8 right-8 text-white hover:text-primary transition-colors p-2">
+        <span class="material-icons text-4xl">close</span>
+    </button>
+    <a class="text-2xl font-bold text-white hover:text-primary transition-colors" href="index.html">Domov</a>
+    <a class="text-2xl font-bold text-white hover:text-primary transition-colors" href="sluzby.html">Služby</a>
+    <a class="text-2xl font-bold text-white hover:text-primary transition-colors" href="portfolio.html">Portfólio</a>
+    <a class="text-2xl font-bold text-white hover:text-primary transition-colors" href="cenník.html">Cenník</a>
+    <a class="text-2xl font-bold text-white hover:text-primary transition-colors" href="blog.html">Blog</a>
+    <a class="text-2xl font-bold text-white hover:text-primary transition-colors" href="kontakt.html">Kontakt</a>
+    <a href="kontakt.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold text-xl transition-all shadow-lg shadow-primary/20 mt-8">
+        Získať cenovú ponuku
+    </a>
 </div>
 </nav>
 <header class="relative h-[85vh] flex items-center justify-center overflow-hidden">
@@ -90,10 +110,10 @@
                     Viac ako 12 rokov skúseností
                 </span>
 </div>
-<h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-8">
+<h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8">
                 Interiéry, ktoré definujú váš štandard.
             </h1>
-<p class="text-xl text-slate-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+<p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
                 Pretvárame vaše vízie na precízne zrealizovanú skutočnosť. Od prvej skice až po posledný detail nábytku.
             </p>
 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -111,7 +131,7 @@
 <div class="max-w-7xl mx-auto">
 <div class="text-center mb-16">
 <h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Čo ponúkame</h2>
-<h3 class="text-4xl font-extrabold dark:text-white">Komplexné riešenia interiérov</h3>
+<h3 class="text-3xl md:text-4xl font-extrabold dark:text-white">Komplexné riešenia interiérov</h3>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <div class="group p-8 rounded-2xl bg-background-light dark:bg-white/5 border border-transparent hover:border-primary/20 transition-all hover:shadow-xl">
@@ -152,7 +172,7 @@ Reštaurácia, predajňa alebo kaviareň? Žiadny problém. Navrhneme a zariadí
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 <div>
 <h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Dôvera</h2>
-<h3 class="text-4xl font-extrabold dark:text-white mb-6">Prečo si vybrať práve nás?</h3>
+<h3 class="text-3xl md:text-4xl font-extrabold dark:text-white mb-6">Prečo si vybrať práve nás?</h3>
 <p class="text-slate-600 dark:text-slate-400 text-lg mb-8">
                     Nejde len o pekné obrázky. Ponúkame partnerstvo, ktoré vás prevedie celým procesom od prvotnej myšlienky až po odovzdanie kľúčov.
                 </p>
@@ -207,7 +227,7 @@ Reštaurácia, predajňa alebo kaviareň? Žiadny problém. Navrhneme a zariadí
 <div class="flex flex-col md:flex-row justify-between items-end mb-12">
 <div>
 <h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Portfólio</h2>
-<h3 class="text-4xl font-extrabold dark:text-white">Ukážky našej práce</h3>
+<h3 class="text-3xl md:text-4xl font-extrabold dark:text-white">Ukážky našej práce</h3>
 </div>
 <a class="hidden md:flex items-center gap-2 font-bold text-primary hover:text-primary/80 transition-colors" href="portfolio.html">
                 Zobraziť všetky projekty <span class="material-icons">arrow_forward</span>
@@ -259,7 +279,7 @@ Reštaurácia, predajňa alebo kaviareň? Žiadny problém. Navrhneme a zariadí
 <div class="max-w-7xl mx-auto">
 <div class="text-center mb-16">
 <h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Náš Pracovný Postup</h2>
-<h3 class="text-4xl font-extrabold dark:text-white">Od idey k dokonalej realizácii</h3>
+<h3 class="text-3xl md:text-4xl font-extrabold dark:text-white">Od idey k dokonalej realizácii</h3>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
 <div class="relative group">
@@ -305,7 +325,7 @@ Reštaurácia, predajňa alebo kaviareň? Žiadny problém. Navrhneme a zariadí
 <div class="max-w-7xl mx-auto">
 <div class="text-center mb-16">
 <h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Spoznajte nás</h2>
-<h3 class="text-4xl font-extrabold dark:text-white mb-4">Tím 3interierr</h3>
+<h3 class="text-3xl md:text-4xl font-extrabold dark:text-white mb-4">Tím 3interierr</h3>
 <span class="block w-20 h-1 bg-slate-200 mx-auto rounded-full"></span>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -344,7 +364,7 @@ Reštaurácia, predajňa alebo kaviareň? Žiadny problém. Navrhneme a zariadí
 <div class="max-w-7xl mx-auto">
     <div class="text-center mb-16">
         <h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">Transformácie</h2>
-        <h3 class="text-4xl font-extrabold dark:text-white mb-4">Inšpirujte sa takýmto dizajnom</h3>
+        <h3 class="text-3xl md:text-4xl font-extrabold dark:text-white mb-4">Inšpirujte sa takýmto dizajnom</h3>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Posuňte posuvník a pozrite si rozdiel medzi vizualizáciou a realitou.</p>
     </div>
 
@@ -836,5 +856,33 @@ function updateSlider(rangeInput) {
     document.querySelectorAll('.current-year').forEach(el => {
         el.textContent = new Date().getFullYear();
     });
+</script>
+<script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('bg-background-dark/95', 'backdrop-blur-md', 'h-20');
+            nav.classList.remove('h-28');
+        } else {
+            nav.classList.remove('bg-background-dark/95', 'backdrop-blur-md', 'h-20');
+            nav.classList.add('h-28');
+        }
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    function toggleMenu() {
+        if (mobileMenu) {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden');
+        }
+    }
+
+    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMenu);
+    if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
 </script>
 </body></html>

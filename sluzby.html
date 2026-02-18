@@ -41,26 +41,46 @@
             color: white;
         }
     </style>
-  <script type="module" crossorigin src="./assets/navbar-NPbXZ63f.js"></script>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200" data-hero-page="true">
 <nav class="fixed top-0 w-full z-50 bg-background-dark text-white border-b border-white/10 shadow-md transition-all duration-300">
 <div class="w-full max-w-[95%] mx-auto px-6 h-28 flex items-center justify-between">
 <div class="flex items-center gap-2">
 <a class="flex items-center gap-2" href="index.html">
-<img alt="3INTERIERR Logo" class="h-[120px] w-auto" src="img/logo.png"/>
+<img alt="3INTERIERR Logo" class="h-[80px] md:h-[120px] w-auto transition-all duration-300" src="img/logo.png"/>
 </a>
 </div>
-<div class="hidden md:flex items-center gap-8 font-medium">
+<div class="hidden lg:flex items-center gap-8 font-medium">
 <a class="text-primary font-bold" href="sluzby.html">Služby</a>
 <a class="hover:text-primary transition-colors" href="portfolio.html">Portfólio</a>
 <a class="hover:text-primary transition-colors" href="cenník.html">Cenník</a>
 <a class="hover:text-primary transition-colors" href="blog.html">Blog</a>
 <a class="hover:text-primary transition-colors" href="kontakt.html">Kontakt</a>
 </div>
+<div class="hidden lg:block">
 <a href="kontakt.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-bold transition-all shadow-lg shadow-primary/20">
                 Získať cenovú ponuku
             </a>
+</div>
+<!-- Mobile Menu Button -->
+<button id="mobile-menu-btn" class="lg:hidden text-white hover:text-primary transition-colors p-2">
+    <span class="material-icons text-3xl">menu</span>
+</button>
+</div>
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-40 bg-background-dark/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col items-center justify-center space-y-8">
+    <button id="close-menu-btn" class="absolute top-8 right-8 text-white hover:text-primary transition-colors p-2">
+        <span class="material-icons text-4xl">close</span>
+    </button>
+    <a class="text-2xl font-bold text-white hover:text-primary transition-colors" href="index.html">Domov</a>
+    <a class="text-2xl font-bold text-primary" href="sluzby.html">Služby</a>
+    <a class="text-2xl font-bold text-white hover:text-primary transition-colors" href="portfolio.html">Portfólio</a>
+    <a class="text-2xl font-bold text-white hover:text-primary transition-colors" href="cenník.html">Cenník</a>
+    <a class="text-2xl font-bold text-white hover:text-primary transition-colors" href="blog.html">Blog</a>
+    <a class="text-2xl font-bold text-white hover:text-primary transition-colors" href="kontakt.html">Kontakt</a>
+    <a href="kontakt.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold text-xl transition-all shadow-lg shadow-primary/20 mt-8">
+        Získať cenovú ponuku
+    </a>
 </div>
 </nav>
 <header class="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
@@ -83,7 +103,7 @@
 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 <div class="order-2 lg:order-1">
 <h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">VIZUALIZÁCIE</h2>
-<h3 class="text-4xl font-extrabold dark:text-white mb-6">Vizualizácie návrhov</h3>
+<h3 class="text-3xl md:text-4xl font-extrabold dark:text-white mb-6">Vizualizácie návrhov</h3>
 <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">
                     Neviete si celkom predstaviť zmeny vášho interiéru? Rozmiestnenie jednotlivých kúskov nábytku? Máte predstavu, ale radi by ste ju videli najprv na papieri?
                 </p>
@@ -118,7 +138,7 @@
 </div>
 <div>
 <h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">TECHNICKÁ DOKUMENTÁCIA</h2>
-<h3 id="realizacny-projekt" class="scroll-mt-32 text-4xl font-extrabold dark:text-white mb-6">Realizačný projekt</h3>
+<h3 id="realizacny-projekt" class="scroll-mt-32 text-3xl md:text-4xl font-extrabold dark:text-white mb-6">Realizačný projekt</h3>
 <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">
                     Ak sa chystáte zrekonštruovať vašu súčasnú nehnuteľnosť, je potrebné si nechať vypracovať "realizačný projekt".
                 </p>
@@ -135,7 +155,7 @@
 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 <div class="order-2 lg:order-1">
 <h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">REALIZÁCIA</h2>
-<h3 class="text-4xl font-extrabold dark:text-white mb-6">Interiér na kľúč</h3>
+<h3 class="text-3xl md:text-4xl font-extrabold dark:text-white mb-6">Interiér na kľúč</h3>
 <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">
                     Okrem návrhu zabezpečíme aj kompletnú realizáciu. Na základe vstupných údajov (pôdorys priestoru, fotografie, rozvody inštalácie, rozpočet) si prejdeme Vaše požiadavky a predstavy.
                 </p>
@@ -174,7 +194,7 @@
 </div>
 <div>
 <h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">CUSTOM FURNITURE</h2>
-<h3 id="nabytok" class="scroll-mt-32 text-4xl font-extrabold dark:text-white mb-6">Návrh a výroba nábytku</h3>
+<h3 id="nabytok" class="scroll-mt-32 text-3xl md:text-4xl font-extrabold dark:text-white mb-6">Návrh a výroba nábytku</h3>
 <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-6">
                     Každý jeden kúsok, ktorý vidíte na našich fotkách, si môžete u nás objednať. Dokážeme Vaše predstavy preniesť na papier, vďaka ktorým stolár vytvorí jedinečný kúsok umenia.
                 </p>
@@ -191,7 +211,7 @@
 <div class="max-w-7xl mx-auto">
 <div class="text-center mb-16">
 <h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">S ČÍM VÁM EŠTE VIEME POMÔCŤ?</h2>
-<h3 class="text-4xl font-extrabold dark:text-white">Doplnkové služby</h3>
+<h3 class="text-3xl md:text-4xl font-extrabold dark:text-white">Doplnkové služby</h3>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 <div class="group p-6 rounded-xl bg-slate-50 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border border-slate-100 dark:border-white/10 hover:border-primary/30 hover:shadow-xl transition-all duration-300 cursor-default">
@@ -257,7 +277,7 @@
 <div class="max-w-7xl mx-auto px-6">
 <div class="text-center mb-12">
 <h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">AKO PRACUJEME</h2>
-<h3 class="text-3xl font-extrabold dark:text-white">Váš interiér v 4 krokoch</h3>
+<h3 class="text-3xl md:text-4xl font-extrabold dark:text-white">Váš interiér v 4 krokoch</h3>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
 <div class="hidden md:block absolute top-12 left-[12%] right-[12%] h-0.5 bg-slate-200 dark:bg-white/10 z-0"></div>
@@ -423,5 +443,33 @@
     document.querySelectorAll('.current-year').forEach(el => {
         el.textContent = new Date().getFullYear();
     });
+</script>
+<script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('bg-background-dark/95', 'backdrop-blur-md', 'h-20');
+            nav.classList.remove('h-28');
+        } else {
+            nav.classList.remove('bg-background-dark/95', 'backdrop-blur-md', 'h-20');
+            nav.classList.add('h-28');
+        }
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    function toggleMenu() {
+        if (mobileMenu) {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden');
+        }
+    }
+
+    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMenu);
+    if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
 </script>
 </body></html>

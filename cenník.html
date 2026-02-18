@@ -2,7 +2,7 @@
 <html lang="sk"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Cenník a Kalkulačka | 3interierr</title>
+<title>Cenník a Odhad | 3interierr</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
@@ -14,6 +14,7 @@
                 extend: {
                     colors: {
                         "primary": "#FF0060",
+                        "primary-dark": "#D60050",
                         "background-light": "#f8f5f7",
                         "background-dark": "#221017",
                         "secondary-dark": "#1a0d12",
@@ -29,44 +30,61 @@
 <style>
         body { font-family: 'Manrope', sans-serif; }
         .hero-overlay {
-            background: linear-gradient(rgba(34, 16, 23, 0.6), rgba(34, 16, 23, 0.8));
+            background: linear-gradient(rgba(34, 16, 23, 0.7), rgba(34, 16, 23, 0.9));
         }
         .glassmorphism {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        input[type="range"]::-webkit-slider-thumb {
+        .calculator-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .calculator-card.selected {
+            border-color: #FF0060;
+            background-color: #fff0f5;
+        }input[type=range] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none;
             height: 24px;
             width: 24px;
             border-radius: 50%;
             background: #FF0060;
             cursor: pointer;
-            margin-top: -10px;
+            margin-top: -9px;
+            box-shadow: 0 2px 6px rgba(255, 0, 96, 0.4);
         }
-        input[type="range"]::-webkit-slider-runnable-track {
+        input[type=range]::-webkit-slider-runnable-track {
             width: 100%;
-            height: 4px;
+            height: 6px;
             cursor: pointer;
-            background: #e2e8f0;
-            border-radius: 2px;
+            background: #cbd5e1;
+            border-radius: 3px;
         }
-        .check-radio:checked + div {
-            border-color: #FF0060;
-            background-color: #fff0f5;
+        input[type=range]::-moz-range-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: #cbd5e1;
+            border-radius: 3px;
         }
-        .check-radio:checked + div .check-icon {
-            opacity: 1;
+        .check-icon {
+            color: #FF0060;
+            flex-shrink: 0;
         }
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200">
-<nav class="sticky top-0 z-50 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-primary/10">
-<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<nav class="fixed top-0 w-full z-50 bg-background-dark text-white border-b border-white/10 shadow-md transition-all duration-300">
+<div class="w-full max-w-[95%] mx-auto px-6 h-28 flex items-center justify-between">
 <div class="flex items-center gap-2">
 <a class="flex items-center gap-2" href="index.html">
-<img alt="3INTERIERR Logo" class="h-16 w-auto" src="img/logo.png"/>
+<img alt="3INTERIERR Logo" class="h-[120px] w-auto" src="img/logo.png"/>
 </a>
 </div>
 <div class="hidden md:flex items-center gap-8 font-medium">
@@ -77,7 +95,7 @@
 <a class="hover:text-primary transition-colors" href="kontakt.html">Kontakt</a>
 </div>
 <a href="kontakt.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-bold transition-all shadow-lg shadow-primary/20">
-                Konzultácia zdarma
+                Získať cenovú ponuku
             </a>
 </div>
 </nav>
@@ -87,313 +105,421 @@
 <div class="absolute inset-0 hero-overlay"></div>
 </div>
 <div class="relative z-10 max-w-5xl px-6 text-center text-white">
-<div class="glassmorphism p-8 md:p-12 rounded-2xl max-w-4xl mx-auto">
-<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-                    Získajte odhad ceny vášho vysnívaného domova
+<div class="glassmorphism p-8 md:p-12 rounded-2xl max-w-3xl mx-auto">
+<h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
+                    Transparentnosť v každom kroku.
                 </h1>
 <p class="text-xl text-slate-200 font-light leading-relaxed max-w-2xl mx-auto">
-                    Transparentné ceny bez skrytých poplatkov. Vyskúšajte našu interaktívnu kalkulačku a zistite orientačnú cenu realizácie.
+                    Presná predstava o nákladoch ešte pred začiatkom spolupráce. Vypočítajte si orientačnú cenu vášho projektu.
                 </p>
 </div>
 </div>
 </header>
-<section class="py-16 px-6 -mt-20 relative z-20">
-<div class="max-w-4xl mx-auto bg-white dark:bg-secondary-dark rounded-3xl shadow-2xl overflow-hidden border border-slate-100 dark:border-white/10">
-<div class="p-8 md:p-12">
-<h2 class="text-3xl font-extrabold mb-8 text-center dark:text-white">Interaktívna cenová kalkulačka</h2>
-<div class="space-y-10">
+<section class="py-16 px-6 -mt-16 relative z-20">
+<div class="max-w-4xl mx-auto bg-white dark:bg-secondary-dark rounded-3xl shadow-2xl p-8 md:p-12 border border-slate-100 dark:border-white/10">
+<div class="text-center mb-10">
+<h2 class="text-3xl font-extrabold dark:text-white mb-2">Interaktívny odhad ceny</h2>
+<p class="text-slate-500 dark:text-slate-400">Vyberte si typ služby a zadajte veľkosť priestoru.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+<div class="calculator-card selected group relative cursor-pointer border-2 rounded-xl p-6 hover:shadow-lg bg-white dark:bg-white/5 dark:border-white/10" id="opt-study" onclick="selectService('study')">
+<div class="absolute top-4 right-4 w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center bg-primary">
+<span class="material-icons text-white text-sm">check</span>
+</div>
+<h3 class="font-bold text-xl mb-2 dark:text-white">Interiérová štúdia</h3>
+<p class="text-sm text-slate-500 mb-4 dark:text-slate-400">Ideálne pre vizualizáciu priestoru bez technických výkresov.</p>
+<div class="text-3xl font-extrabold text-primary">25€ <span class="text-base font-normal text-slate-400">/ m²</span></div>
+</div>
+<div class="calculator-card group relative cursor-pointer border-2 border-transparent hover:border-primary/30 rounded-xl p-6 bg-slate-50 dark:bg-white/5 hover:shadow-lg transition-all" id="opt-project" onclick="selectService('project')">
+<div class="absolute top-4 right-4 w-6 h-6 rounded-full border-2 border-slate-300 dark:border-slate-600 flex items-center justify-center">
+</div>
+<h3 class="font-bold text-xl mb-2 dark:text-white">Kompletný projekt</h3>
+<p class="text-sm text-slate-500 mb-4 dark:text-slate-400">Kompletná dokumentácia, výkresy a autorský dozor.</p>
+<div class="text-3xl font-extrabold text-primary">45€ <span class="text-base font-normal text-slate-400">/ m²</span></div>
+</div>
+</div>
+<div class="mb-12">
+<div class="flex justify-between items-end mb-4">
+<label class="font-bold text-slate-700 dark:text-white text-lg">Plocha interiéru</label>
+<div class="text-3xl font-bold text-primary" id="area-display">60 m²</div>
+</div>
+<input class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 accent-primary" id="area-slider" max="250" min="10" oninput="updatePrice()" type="range" value="60"/>
+<div class="flex justify-between text-xs text-slate-400 mt-2 font-medium">
+<span>10 m²</span>
+<span>250 m²</span>
+</div>
+</div>
+<div class="bg-slate-900 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-white">
 <div>
-<h3 class="text-lg font-bold mb-4 flex items-center gap-2 dark:text-white">
-<span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm">1</span>
-                                Typ nehnuteľnosti
-                            </h3>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-<label class="cursor-pointer relative">
-<input class="sr-only check-radio" name="type" type="radio" value="byt"/>
-<div class="border-2 border-slate-200 dark:border-white/10 rounded-xl p-6 hover:border-primary/50 transition-all text-center h-full flex flex-col items-center justify-center gap-3 bg-slate-50 dark:bg-white/5">
-<span class="material-symbols-outlined text-4xl text-slate-400 dark:text-slate-500">apartment</span>
-<span class="font-bold dark:text-white">Byt</span>
-<div class="check-icon absolute top-3 right-3 text-primary opacity-0 transition-opacity">
-<span class="material-icons">check_circle</span>
+<p class="text-slate-400 text-sm font-medium uppercase tracking-wider mb-1">Odhadovaná cena projektu</p>
+<div class="text-4xl md:text-5xl font-extrabold" id="total-price">1 500 €</div>
+<p class="text-xs text-slate-500 mt-2">*Cena je orientačná a bez DPH</p>
+</div>
+<button class="w-full md:w-auto bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg shadow-primary/20 whitespace-nowrap">
+                Rezervovať 15-min konzultáciu
+            </button>
 </div>
 </div>
-</label>
-<label class="cursor-pointer relative">
-<input checked="" class="sr-only check-radio" name="type" type="radio" value="dom"/>
-<div class="border-2 border-slate-200 dark:border-white/10 rounded-xl p-6 hover:border-primary/50 transition-all text-center h-full flex flex-col items-center justify-center gap-3 bg-slate-50 dark:bg-white/5">
-<span class="material-symbols-outlined text-4xl text-slate-400 dark:text-slate-500">home</span>
-<span class="font-bold dark:text-white">Rodinný dom</span>
-<div class="check-icon absolute top-3 right-3 text-primary opacity-0 transition-opacity">
-<span class="material-icons">check_circle</span>
-</div>
-</div>
-</label>
-<label class="cursor-pointer relative">
-<input class="sr-only check-radio" name="type" type="radio" value="office"/>
-<div class="border-2 border-slate-200 dark:border-white/10 rounded-xl p-6 hover:border-primary/50 transition-all text-center h-full flex flex-col items-center justify-center gap-3 bg-slate-50 dark:bg-white/5">
-<span class="material-symbols-outlined text-4xl text-slate-400 dark:text-slate-500">desk</span>
-<span class="font-bold dark:text-white">Kancelária</span>
-<div class="check-icon absolute top-3 right-3 text-primary opacity-0 transition-opacity">
-<span class="material-icons">check_circle</span>
-</div>
-</div>
-</label>
-</div>
-</div>
-<div>
-<div class="flex justify-between items-center mb-4">
-<h3 class="text-lg font-bold flex items-center gap-2 dark:text-white">
-<span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm">2</span>
-                                    Výmera priestoru
-                                </h3>
-<span class="text-2xl font-bold text-primary">85 m²</span>
-</div>
-<input class="w-full bg-slate-200 rounded-lg appearance-none cursor-pointer h-2" max="300" min="20" type="range" value="85"/>
-<div class="flex justify-between text-xs text-slate-400 mt-2">
-<span>20 m²</span>
-<span>150 m²</span>
-<span>300 m²</span>
-</div>
-</div>
-<div>
-<h3 class="text-lg font-bold mb-4 flex items-center gap-2 dark:text-white">
-<span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm">3</span>
-                                Úroveň prevedenia
-                            </h3>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-<label class="cursor-pointer relative">
-<input class="sr-only check-radio" name="level" type="radio" value="standard"/>
-<div class="border-2 border-slate-200 dark:border-white/10 rounded-xl p-5 hover:border-primary/50 transition-all h-full bg-slate-50 dark:bg-white/5">
-<div class="flex justify-between items-start mb-2">
-<span class="font-bold dark:text-white">Štandard</span>
-<div class="check-icon text-primary opacity-0 transition-opacity">
-<span class="material-icons">check_circle</span>
-</div>
-</div>
-<p class="text-sm text-slate-500 dark:text-slate-400">Kvalitné materiály, funkčný dizajn, ekonomické riešenia.</p>
-</div>
-</label>
-<label class="cursor-pointer relative">
-<input checked="" class="sr-only check-radio" name="level" type="radio" value="premium"/>
-<div class="border-2 border-slate-200 dark:border-white/10 rounded-xl p-5 hover:border-primary/50 transition-all h-full bg-slate-50 dark:bg-white/5">
-<div class="flex justify-between items-start mb-2">
-<span class="font-bold dark:text-white">Premium</span>
-<div class="check-icon text-primary opacity-0 transition-opacity">
-<span class="material-icons">check_circle</span>
-</div>
-</div>
-<p class="text-sm text-slate-500 dark:text-slate-400">Nadštandardné povrchy, atypický nábytok, dizajnové prvky.</p>
-</div>
-</label>
-<label class="cursor-pointer relative">
-<input class="sr-only check-radio" name="level" type="radio" value="luxury"/>
-<div class="border-2 border-slate-200 dark:border-white/10 rounded-xl p-5 hover:border-primary/50 transition-all h-full bg-slate-50 dark:bg-white/5">
-<div class="flex justify-between items-start mb-2">
-<span class="font-bold dark:text-white">Luxury</span>
-<div class="check-icon text-primary opacity-0 transition-opacity">
-<span class="material-icons">check_circle</span>
-</div>
-</div>
-<p class="text-sm text-slate-500 dark:text-slate-400">Exkluzívne materiály, svetové značky, smart home integrácia.</p>
-</div>
-</label>
-</div>
-</div>
-</div>
-<div class="mt-12 pt-10 border-t border-slate-200 dark:border-white/10">
-<div class="flex flex-col md:flex-row items-center justify-between gap-8">
-<div class="text-center md:text-left">
-<p class="text-slate-500 dark:text-slate-400 mb-1">Odhadovaná cena realizácie</p>
-<div class="text-4xl md:text-5xl font-extrabold text-slate-800 dark:text-white">
-                                    35 000 € <span class="text-slate-400 mx-2">-</span> 42 000 €
-                                </div>
-<p class="text-xs text-slate-400 mt-2">* Cena je orientačná a zahŕňa projekt aj realizáciu.</p>
-</div>
-<a href="kontakt.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/20 w-full md:w-auto inline-block text-center">
-                                Vyžiadať presnú cenovú ponuku
-                            </a>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="py-24 px-6 bg-white dark:bg-background-dark">
-<div class="max-w-7xl mx-auto">
-<div class="text-center mb-16 max-w-3xl mx-auto">
-<h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">PREČO INVESTOVAŤ DO PROJEKTU?</h2>
-<h3 class="text-4xl font-extrabold dark:text-white mb-6">Kvalitný projekt šetrí vaše peniaze</h3>
-<p class="text-slate-600 dark:text-slate-300 text-lg">
-                    Mnohí považujú interiérového dizajnéra za luxus. V skutočnosti vám však realizačný projekt pomôže vyhnúť sa chybám, ktoré by vás stáli oveľa viac.
-                </p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="bg-background-light dark:bg-white/5 p-8 rounded-2xl border border-transparent hover:border-primary/20 hover:shadow-lg transition-all">
-<div class="w-14 h-14 bg-white dark:bg-background-dark rounded-xl flex items-center justify-center text-primary mb-6 shadow-sm">
-<span class="material-symbols-outlined text-3xl">savings</span>
-</div>
-<h4 class="text-xl font-bold mb-3 dark:text-white">Eliminácia chýb</h4>
-<p class="text-slate-600 dark:text-slate-400">
-                        Zabudnite na búranie zle postavených priečok alebo posúvanie zásuviek. Všetko vyriešime na papieri predtým, než sa kopne do zeme.
-                    </p>
-</div>
-<div class="bg-background-light dark:bg-white/5 p-8 rounded-2xl border border-transparent hover:border-primary/20 hover:shadow-lg transition-all">
-<div class="w-14 h-14 bg-white dark:bg-background-dark rounded-xl flex items-center justify-center text-primary mb-6 shadow-sm">
-<span class="material-symbols-outlined text-3xl">inventory_2</span>
-</div>
-<h4 class="text-xl font-bold mb-3 dark:text-white">Presný rozpočet</h4>
-<p class="text-slate-600 dark:text-slate-400">
-                        Vďaka výkazu výmer budete presne vedieť, koľko materiálu objednať. Žiadne zbytočné prebytky ani chýbajúce obklady.
-                    </p>
-</div>
-<div class="bg-background-light dark:bg-white/5 p-8 rounded-2xl border border-transparent hover:border-primary/20 hover:shadow-lg transition-all">
-<div class="w-14 h-14 bg-white dark:bg-background-dark rounded-xl flex items-center justify-center text-primary mb-6 shadow-sm">
-<span class="material-symbols-outlined text-3xl">handshake</span>
-</div>
-<h4 class="text-xl font-bold mb-3 dark:text-white">Výhodnejšie ceny</h4>
-<p class="text-slate-600 dark:text-slate-400">
-                        S našimi partnermi máme dohodnuté veľkoobchodné zľavy na nábytok, svietidlá a materiály, ktoré prenášame na vás.
-                    </p>
-</div>
-</div>
-</div>
-</section>
-<section class="py-24 px-6 bg-slate-900 text-white relative overflow-hidden">
-<div class="absolute inset-0 bg-background-dark opacity-90 z-0"></div>
-<div class="absolute inset-0 bg-primary/5 pattern-grid-lg z-0"></div>
-<div class="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16">
-<div class="md:w-1/2">
-<span class="inline-block px-4 py-1.5 bg-primary/20 text-primary border border-primary/30 rounded-full text-sm font-bold uppercase tracking-wider mb-6">
-                    Pre rok <span class="current-year"></span></span>
-<h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
-                    Cenník doplnkových prác
-                </h2>
-<p class="text-slate-300 text-lg mb-8 leading-relaxed">
-                    Stiahnite si náš detailný cenník pre rok <span class="current-year">2024</span>. Obsahuje sadzby za vizualizácie, technickú dokumentáciu, autorský dozor a doplnkové služby ako nákup či styling.
-                </p>
-<ul class="space-y-4 mb-8">
-<li class="flex items-center gap-3">
-<span class="material-icons text-primary">check_circle</span>
-<span class="text-slate-200">Hodinové sadzby dizajnérov</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="material-icons text-primary">check_circle</span>
-<span class="text-slate-200">Cenník technickej dokumentácie</span>
-</li>
-<li class="flex items-center gap-3">
-<span class="material-icons text-primary">check_circle</span>
-<span class="text-slate-200">Balíčky služieb</span>
-</li>
-</ul>
-<button class="flex items-center gap-3 bg-white text-background-dark hover:bg-slate-100 px-8 py-4 rounded-xl font-bold transition-all shadow-lg">
-<span class="material-icons">download</span>
-                    Stiahnuť cenník PDF
-                </button>
-</div>
-<div class="md:w-1/2 flex justify-center">
-<div class="relative group">
-<div class="absolute -inset-2 bg-gradient-to-tr from-primary to-purple-500 rounded-lg blur opacity-40 group-hover:opacity-60 transition duration-500"></div>
-<img alt="Cenník 2024 Preview" class="relative w-full max-w-sm rounded-lg shadow-2xl border border-white/10 transform group-hover:scale-[1.02] transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkzirIGaslvlEIzEopVP9QXwOZM07xhdVVxlEDe0ec0-ygSwKI1z0yEQApYXQTd3wfMLzVBQEagRKlc14z3rgTVmRn1J0kl1BGMmUfyK5Cflpdy2P11YoHDW5Oeq3BagdqHEvQ-HYb9dhT1eRByAisTURhRoLjOK10vwfnXlvJ09gdfuztvRPB8T1ojxVe9tn5j3N8m9S8Z9wyqbQPuURoZxvSFbW1EKjw0DOmLp5LSCTlLC3OxKSQXno4eIwfPRnK-nLYlfUNf_ku"/>
-</div>
-</div>
-</div>
-</section>
-<section class="py-24 px-6 bg-background-light dark:bg-secondary-dark">
-<div class="max-w-7xl mx-auto">
-<div class="text-center mb-20">
-<h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">HARMONOGRAM PLATIEB</h2>
-<h3 class="text-3xl font-extrabold dark:text-white">Ako financujeme projekt</h3>
-<p class="text-slate-500 dark:text-slate-400 mt-4 max-w-2xl mx-auto">
-                    Platby sú rozdelené do etáp, aby ste mali kontrolu nad každým krokom realizácie.
-                </p>
-</div>
-<div class="relative">
-<div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-slate-200 dark:bg-white/10 -translate-y-1/2 rounded z-0"></div>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
-<div class="group">
-<div class="bg-white dark:bg-background-dark p-6 rounded-2xl border-2 border-slate-100 dark:border-white/10 shadow-lg text-center hover:border-primary/50 transition-all relative">
-<div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 border-4 border-white dark:border-background-dark shadow-md md:absolute md:-top-20 md:left-1/2 md:-translate-x-1/2">
-                                10%
-                            </div>
-<h4 class="font-bold text-lg mb-2 dark:text-white md:mt-8">Rezervácia termínu</h4>
-<p class="text-sm text-slate-500 dark:text-slate-400">Podpis zmluvy a záväzná rezervácia kapacít nášho tímu.</p>
-</div>
-</div>
-<div class="group">
-<div class="bg-white dark:bg-background-dark p-6 rounded-2xl border-2 border-slate-100 dark:border-white/10 shadow-lg text-center hover:border-primary/50 transition-all relative">
-<div class="w-16 h-16 bg-white dark:bg-background-dark text-slate-800 dark:text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 border-4 border-slate-200 dark:border-white/20 shadow-md md:absolute md:-top-20 md:left-1/2 md:-translate-x-1/2 group-hover:border-primary group-hover:text-primary transition-colors">
-                                30%
-                            </div>
-<h4 class="font-bold text-lg mb-2 dark:text-white md:mt-8">Návrhová fáza</h4>
-<p class="text-sm text-slate-500 dark:text-slate-400">Po odovzdaní a odsúhlasení 3D vizualizácií interiéru.</p>
-</div>
-</div>
-<div class="group">
-<div class="bg-white dark:bg-background-dark p-6 rounded-2xl border-2 border-slate-100 dark:border-white/10 shadow-lg text-center hover:border-primary/50 transition-all relative">
-<div class="w-16 h-16 bg-white dark:bg-background-dark text-slate-800 dark:text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 border-4 border-slate-200 dark:border-white/20 shadow-md md:absolute md:-top-20 md:left-1/2 md:-translate-x-1/2 group-hover:border-primary group-hover:text-primary transition-colors">
-                                40%
-                            </div>
-<h4 class="font-bold text-lg mb-2 dark:text-white md:mt-8">Realizačná fáza</h4>
-<p class="text-sm text-slate-500 dark:text-slate-400">Počas stavebných prác a výroby nábytku na mieru.</p>
-</div>
-</div>
-<div class="group">
-<div class="bg-white dark:bg-background-dark p-6 rounded-2xl border-2 border-slate-100 dark:border-white/10 shadow-lg text-center hover:border-primary/50 transition-all relative">
-<div class="w-16 h-16 bg-white dark:bg-background-dark text-slate-800 dark:text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 border-4 border-slate-200 dark:border-white/20 shadow-md md:absolute md:-top-20 md:left-1/2 md:-translate-x-1/2 group-hover:border-primary group-hover:text-primary transition-colors">
-                                20%
-                            </div>
-<h4 class="font-bold text-lg mb-2 dark:text-white md:mt-8">Odovzdanie</h4>
-<p class="text-sm text-slate-500 dark:text-slate-400">Po finálnom upratovaní, stylingu a odovzdaní kľúčov.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="py-24 px-6 bg-white dark:bg-background-dark">
-<div class="max-w-4xl mx-auto text-center">
-<h2 class="text-4xl md:text-5xl font-extrabold mb-8 dark:text-white">Pripravení začať?</h2>
-<p class="text-xl text-slate-500 dark:text-slate-400 mb-10 max-w-2xl mx-auto">
-                Rezervujte si bezplatnú 30-minútovú konzultáciu. Preberieme vaše predstavy, rozpočet a ukážeme vám, ako môže váš nový domov vyzerať.
+
+<!-- INJECTED CUSTOM CONTENT -->
+<div class="max-w-7xl mx-auto mt-16">
+    <div class="flex flex-col md:flex-row items-center gap-12 mt-12 bg-background-light dark:bg-white/5 p-8 rounded-3xl border border-transparent hover:border-primary/20 transition-all">
+        <div class="md:w-1/2">
+             <img src="img/cennik-fotka1.jpg" alt="Výsledok projektu" class="rounded-2xl shadow-xl w-full object-cover aspect-[4/3]">
+        </div>
+        <div class="md:w-1/2">
+            <p class="text-xl font-medium text-slate-700 dark:text-slate-200 leading-relaxed border-l-4 border-primary pl-6 py-2">
+                 "Výsledkom realizačného projektu je vytlačená a elektronická forma diela – projektu, príprava projektu na základe interiérovej štúdie a odovzdanie komplexného diela (riešených priestorov) podľa odsúhlasenej interiérovej štúdie = môžete sa sťahovať"
             </p>
-<div class="flex flex-col sm:flex-row justify-center gap-4">
-<a href="kontakt.html" class="bg-primary hover:bg-primary/90 text-white px-10 py-5 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/30 flex items-center justify-center gap-3">
-<span class="material-icons">calendar_today</span>
-                    Rezervovať konzultáciu zdarma
-                </a>
-<a href="kontakt.html" class="bg-transparent border-2 border-slate-200 dark:border-white/10 hover:border-primary hover:text-primary text-slate-800 dark:text-white px-10 py-5 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-3">
-                    Kontaktovať nás
-                </a>
+        </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row-reverse items-center gap-12 mt-12 bg-white dark:bg-secondary-dark p-8 rounded-3xl border-2 border-slate-100 dark:border-white/10 hover:border-primary/50 transition-all shadow-lg">
+        <div class="md:w-1/2">
+             <img src="img/cennik-fotka2.jpg" alt="Rozpočet a fakturácie" class="rounded-2xl shadow-xl w-full object-cover aspect-[4/3]">
+        </div>
+        <div class="md:w-1/2 p-4">
+            <h3 class="text-2xl font-extrabold text-slate-800 dark:text-white mb-2 uppercase tracking-tight">ROZPOČET, ADMINISTRATÍVNE ÚKONY A FAKTURÁCIE</h3>
+            <p class="text-3xl font-bold text-primary mb-6">od 150 € <span class="text-sm font-normal text-slate-500 dark:text-slate-400">bez DPH</span></p>
+            
+            <p class="text-slate-600 dark:text-slate-300 italic mb-8 border-l-2 border-slate-200 dark:border-white/10 pl-4">
+                cena záleží od náročnosti projektu
+            </p>
+            
+            <a href="kontakt.html" class="inline-flex items-center gap-2 bg-slate-800 dark:bg-white dark:text-slate-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transition-all transform hover:-translate-y-1 shadow-lg">
+                Kontaktujte nás
+                <span class="material-icons text-sm">arrow_forward</span>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- END INJECTED CUSTOM CONTENT -->
+
+</section>
+<section class="py-16 px-6 bg-white dark:bg-background-dark">
+<div class="max-w-5xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">POROVNANIE BALÍKOV</h2>
+<h3 class="text-3xl md:text-4xl font-extrabold dark:text-white">Čo všetko dostanete?</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-slate-100 dark:border-white/10">
+<th class="py-6 px-4 w-1/2 align-bottom">
+<span class="text-slate-400 font-medium text-sm">Vlastnosti</span>
+</th>
+<th class="py-6 px-4 align-bottom text-center bg-slate-50/50 dark:bg-white/5 rounded-t-xl">
+<h4 class="font-bold text-lg dark:text-white">Interiérová štúdia</h4>
+<p class="text-primary font-bold">25€ / m²</p>
+</th>
+<th class="py-6 px-4 align-bottom text-center bg-slate-50 dark:bg-white/10 rounded-t-xl border-t-4 border-primary">
+<h4 class="font-bold text-lg dark:text-white">Kompletný projekt</h4>
+<p class="text-primary font-bold">45€ / m²</p>
+</th>
+</tr>
+</thead>
+<tbody class="text-slate-600 dark:text-slate-300">
+<tr class="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="py-5 px-4 font-medium">Zameranie priestoru</td>
+<td class="py-5 px-4 text-center text-primary bg-slate-50/30 dark:bg-white/5"><span class="material-icons">check_circle</span></td>
+<td class="py-5 px-4 text-center text-primary bg-slate-50 dark:bg-white/10"><span class="material-icons">check_circle</span></td>
+</tr>
+<tr class="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="py-5 px-4 font-medium">Návrh dispozície (2-3 varianty)</td>
+<td class="py-5 px-4 text-center text-primary bg-slate-50/30 dark:bg-white/5"><span class="material-icons">check_circle</span></td>
+<td class="py-5 px-4 text-center text-primary bg-slate-50 dark:bg-white/10"><span class="material-icons">check_circle</span></td>
+</tr>
+<tr class="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="py-5 px-4 font-medium">3D Vizualizácie (fotorealistické)</td>
+<td class="py-5 px-4 text-center text-primary bg-slate-50/30 dark:bg-white/5"><span class="material-icons">check_circle</span></td>
+<td class="py-5 px-4 text-center text-primary bg-slate-50 dark:bg-white/10"><span class="material-icons">check_circle</span></td>
+</tr>
+<tr class="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="py-5 px-4 font-medium">Špecifikácia zariaďovacích prvkov</td>
+<td class="py-5 px-4 text-center text-primary bg-slate-50/30 dark:bg-white/5"><span class="material-icons">check_circle</span></td>
+<td class="py-5 px-4 text-center text-primary bg-slate-50 dark:bg-white/10"><span class="material-icons">check_circle</span></td>
+</tr>
+<tr class="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="py-5 px-4 font-medium">Výkresová dokumentácia (voda, elektro)</td>
+<td class="py-5 px-4 text-center text-slate-300 dark:text-slate-600 bg-slate-50/30 dark:bg-white/5"><span class="material-icons">remove</span></td>
+<td class="py-5 px-4 text-center text-primary bg-slate-50 dark:bg-white/10"><span class="material-icons">check_circle</span></td>
+</tr>
+<tr class="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="py-5 px-4 font-medium">Technické výkresy nábytku na mieru</td>
+<td class="py-5 px-4 text-center text-slate-300 dark:text-slate-600 bg-slate-50/30 dark:bg-white/5"><span class="material-icons">remove</span></td>
+<td class="py-5 px-4 text-center text-primary bg-slate-50 dark:bg-white/10"><span class="material-icons">check_circle</span></td>
+</tr>
+<tr class="border-b border-slate-100 dark:border-white/5 hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+<td class="py-5 px-4 font-medium">Autorský dozor (15 hodín)</td>
+<td class="py-5 px-4 text-center text-slate-300 dark:text-slate-600 bg-slate-50/30 dark:bg-white/5"><span class="material-icons">remove</span></td>
+<td class="py-5 px-4 text-center text-primary bg-slate-50 dark:bg-white/10"><span class="material-icons">check_circle</span></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </section>
-<footer class="bg-secondary-dark text-white pt-16 pb-8 px-6 border-t border-white/5">
-<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-<div class="flex items-center gap-2">
+<section class="py-20 px-6 bg-background-light dark:bg-secondary-dark border-t border-slate-200 dark:border-white/5">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-primary font-bold uppercase tracking-widest text-sm mb-4">INDIVIDUÁLNE POŽIADAVKY</h2>
+<h3 class="text-3xl md:text-4xl font-extrabold dark:text-white">Ostatné služby</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="bg-white dark:bg-white/5 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-transparent hover:border-primary/20 group">
+<div class="w-14 h-14 rounded-xl bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">electric_bolt</span>
+</div>
+<h4 class="font-bold text-xl mb-3 dark:text-white">Projekt elektrifikácie</h4>
+<p class="text-slate-500 dark:text-slate-400 mb-6 text-sm leading-relaxed">
+                    Kompletná projektová dokumentácia pre nové elektrické rozvody, osvetlenie a inteligentné systémy.
+                </p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100 dark:border-white/10">
+<span class="text-sm text-slate-400">Cena od</span>
+<span class="font-bold text-lg dark:text-white">200 - 300 €</span>
+</div>
+</div>
+<div class="bg-white dark:bg-white/5 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-transparent hover:border-primary/20 group">
+<div class="w-14 h-14 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">water_drop</span>
+</div>
+<h4 class="font-bold text-xl mb-3 dark:text-white">Projekt vody a kúrenia</h4>
+<p class="text-slate-500 dark:text-slate-400 mb-6 text-sm leading-relaxed">
+                    Návrh vodoinštalácie a vykurovacích telies s ohľadom na dispozíciu nábytku a sanitu.
+                </p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100 dark:border-white/10">
+<span class="text-sm text-slate-400">Cena od</span>
+<span class="font-bold text-lg dark:text-white">100 - 200 €</span>
+</div>
+</div>
+<div class="bg-white dark:bg-white/5 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-transparent hover:border-primary/20 group">
+<div class="w-14 h-14 rounded-xl bg-pink-50 dark:bg-pink-900/20 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">square_foot</span>
+</div>
+<h4 class="font-bold text-xl mb-3 dark:text-white">Kladačské plány</h4>
+<p class="text-slate-500 dark:text-slate-400 mb-6 text-sm leading-relaxed">
+                    Detailné plány obkladov a dlažieb pre minimalizáciu odpadu a presnú realizáciu vzorov.
+                </p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100 dark:border-white/10">
+<span class="text-sm text-slate-400">Cena od</span>
+<span class="font-bold text-lg dark:text-white">50 - 100 €</span>
+</div>
+</div>
+<div class="bg-white dark:bg-white/5 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-transparent hover:border-primary/20 group">
+<div class="w-14 h-14 rounded-xl bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">chair</span>
+</div>
+<h4 class="font-bold text-xl mb-3 dark:text-white">Výkresy nábytku</h4>
+<p class="text-slate-500 dark:text-slate-400 mb-6 text-sm leading-relaxed">
+                    Technické výkresy nábytku na mieru pre stolára. Presné rozmery, materiály a kovania.
+                </p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100 dark:border-white/10">
+<span class="text-sm text-slate-400">Cena od</span>
+<span class="font-bold text-lg dark:text-white">100 - 200 €</span>
+</div>
+</div>
+<div class="bg-white dark:bg-white/5 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-transparent hover:border-primary/20 group">
+<div class="w-14 h-14 rounded-xl bg-teal-50 dark:bg-teal-900/20 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">engineering</span>
+</div>
+<h4 class="font-bold text-xl mb-3 dark:text-white">Autorský dozor</h4>
+<p class="text-slate-500 dark:text-slate-400 mb-6 text-sm leading-relaxed">
+                    Pravidelné kontroly na stavbe, koordinácia profesií a riešenie technických detailov počas realizácie.
+                </p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100 dark:border-white/10">
+<span class="text-sm text-slate-400">Sadzba</span>
+<span class="font-bold text-lg dark:text-white">Individuálne</span>
+</div>
+</div>
+<div class="bg-white dark:bg-white/5 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-transparent hover:border-primary/20 group">
+<div class="w-14 h-14 rounded-xl bg-slate-50 dark:bg-white/10 text-slate-600 dark:text-slate-300 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">receipt_long</span>
+</div>
+<h4 class="font-bold text-xl mb-3 dark:text-white">Položkový rozpočet</h4>
+<p class="text-slate-500 dark:text-slate-400 mb-6 text-sm leading-relaxed">
+                    Detailný súpis materiálov, prác a zariadenia. Základ pre kontrolu nákladov a harmonogramu.
+                </p>
+<div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100 dark:border-white/10">
+<span class="text-sm text-slate-400">Cena od</span>
+<span class="font-bold text-lg dark:text-white">150 €</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 px-6 relative overflow-hidden bg-slate-900 text-white">
+<div class="absolute inset-0 bg-gradient-to-r from-background-dark to-slate-900 opacity-95 z-0"></div>
+<div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+<div class="relative z-10 max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-16">
+<div class="md:w-3/5">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/20 text-primary border border-primary/30 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+<span class="material-icons text-sm">download</span> Free Download
+            </div>
+<h2 class="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight">
+                Získajte vzorový položkový rozpočet.
+            </h2>
+<p class="text-slate-300 text-lg mb-8 leading-relaxed">
+                Stiahnite si ukážkový Excel súbor a zistite, ako detailne plánujeme financie pre našich klientov. Vyhnite sa skrytým nákladom pri vašej rekonštrukcii.
+            </p>
+<form class="flex flex-col sm:flex-row gap-4 max-w-md">
+<input class="flex-grow px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="Váš email" type="email"/>
+<button class="px-8 py-4 bg-primary hover:bg-primary-dark text-white font-bold rounded-xl transition-all shadow-lg shadow-primary/30 whitespace-nowrap" type="button">
+                    Stiahnuť vzor
+                </button>
+</form>
+<p class="text-xs text-slate-500 mt-4 flex items-center gap-2">
+<span class="material-icons text-sm">check_circle</span> Obsahuje vzorové položky pre 3-izbový byt.
+            </p>
+</div>
+<div class="md:w-2/5 flex justify-center">
+<div class="relative group">
+<div class="absolute -inset-2 bg-gradient-to-tr from-primary to-purple-600 rounded-2xl blur opacity-60 group-hover:opacity-80 transition duration-500"></div>
+<div class="relative bg-white rounded-xl p-4 transform rotate-3 transition-transform group-hover:rotate-0">
+<div class="bg-slate-50 border border-slate-200 rounded p-4 w-64 h-80 flex flex-col shadow-inner">
+<div class="flex items-center gap-2 mb-4 border-b border-slate-200 pb-2">
+<div class="w-8 h-8 bg-green-500 rounded flex items-center justify-center text-white font-bold">X</div>
+<div class="text-xs text-slate-800 font-bold">ROZPOČET_VZOR.xlsx</div>
+</div>
+<div class="space-y-2">
+<div class="h-2 bg-slate-200 rounded w-3/4"></div>
+<div class="h-2 bg-slate-200 rounded w-full"></div>
+<div class="h-2 bg-slate-200 rounded w-5/6"></div>
+<div class="h-2 bg-slate-200 rounded w-full"></div>
+<div class="h-2 bg-slate-100 rounded w-full mt-4"></div>
+<div class="h-2 bg-slate-100 rounded w-full"></div>
+<div class="mt-8 p-2 bg-green-50 border border-green-100 rounded text-center">
+<span class="text-green-700 font-bold text-lg">TOTAL: 15 450 €</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 px-6 bg-background-dark text-white border-t border-white/5">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="text-4xl font-extrabold mb-6">Pripravení začať?</h2>
+<p class="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
+                Dohodnite si nezáväznú konzultáciu a preberme vaše predstavy. Spoločne nájdeme to najlepšie riešenie pre váš rozpočet.
+            </p>
+<button class="bg-primary hover:bg-primary-dark text-white px-10 py-5 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/20 hover:scale-105 transform duration-200">
+                Rezervovať termín konzultácie
+            </button>
+</div>
+</section>
+<footer class="bg-background-dark text-white pt-24 pb-12 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+<div class="lg:col-span-1">
+<div class="flex items-center gap-2 mb-8">
 <a class="flex items-center gap-2" href="index.html">
 <img alt="3INTERIERR Logo" class="h-12 w-auto" src="img/logo.png"/>
 </a>
 </div>
-<p class="text-slate-500 text-sm">© <span class="current-year">2024</span> 3interierr s.r.o. Všetky práva vyhradené.</p>
-<div class="flex items-center gap-6">
-    <div class="flex gap-4">
-        <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all" href="https://www.facebook.com/3interierr" target="_blank" rel="noopener noreferrer">
-            <i class="material-icons text-xl">facebook</i>
-        </a>
-        <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all" href="https://www.instagram.com/3interierr/" target="_blank" rel="noopener noreferrer">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-        <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all" href="https://www.youtube.com/@3interier" target="_blank" rel="noopener noreferrer">
-            <i class="material-icons text-xl">smart_display</i>
-        </a>
-    </div>
-    <a class="text-sm text-slate-500 hover:text-white transition-colors" href="#">Obchodné podmienky</a>
+<p class="text-slate-400 leading-relaxed mb-8">
+                        Štúdio interiérového dizajnu so zameraním na prémiové realizácie a moderné technologické riešenia.
+                    </p>
+<div class="flex gap-4">
+    <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all" href="https://www.facebook.com/3interierr" target="_blank" rel="noopener noreferrer">
+        <i class="material-icons text-xl">facebook</i>
+    </a>
+    <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all" href="https://www.instagram.com/3interierr/" target="_blank" rel="noopener noreferrer">
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+    <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all" href="https://www.youtube.com/@3interier" target="_blank" rel="noopener noreferrer">
+        <i class="material-icons text-xl">smart_display</i>
+    </a>
+</div>
+</div>
+<div>
+<h6 class="font-bold text-lg mb-8">Služby</h6>
+<ul class="space-y-4 text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="sluzby.html">Návrh interiéru</a></li>
+<li><a class="hover:text-primary transition-colors" href="sluzby.html">3D Vizualizácie</a></li>
+<li><a class="hover:text-primary transition-colors" href="sluzby.html">Realizácia na kľúč</a></li>
+<li><a class="hover:text-primary transition-colors" href="sluzby.html">Autorský dozor</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-bold text-lg mb-8">Informácie</h6>
+<ul class="space-y-4 text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#o-nas">O nás</a></li>
+<li><a class="hover:text-primary transition-colors" href="portfolio.html">Portfólio</a></li>
+<li><a class="hover:text-primary transition-colors" href="blog.html">Blog &amp; Novinky</a></li> 
+<li><a class="hover:text-primary transition-colors" href="cenník.html">Cenník</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-bold text-lg mb-8">Newsletter</h6>
+<p class="text-slate-400 text-sm mb-6">Inšpirácie a tipy pre váš interiér priamo do schránky.</p>
+<form action="https://formspree.io/f/YOUR_FORM_ID" class="flex gap-2" method="POST">
+<input class="bg-white/5 border-none rounded-lg px-4 py-3 flex-grow focus:ring-1 focus:ring-primary text-sm" name="email" placeholder="Váš email" required="" type="email"/>
+<button class="bg-primary px-4 py-3 rounded-lg hover:bg-primary/90 transition-all text-white" type="submit">
+<span class="material-icons">send</span>
+</button>
+</form>
+</div>
+</div>
+<div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-slate-500 text-sm">© <span class="current-year"></span> 3interierr s.r.o. Všetky práva vyhradené.</p>
+<div class="flex gap-8 text-sm text-slate-500">
+<a class="hover:text-white transition-colors" href="#">Ochrana údajov</a>
+<a class="hover:text-white transition-colors" href="#">Obchodné podmienky</a>
+</div>
 </div>
 </div>
 </footer>
-
 <script>
-    document.querySelectorAll('.current-year').forEach(el => {
-        el.textContent = new Date().getFullYear();
-    });
-</script>
+        // Simple Logic for the Pricing Calculator
+        let currentRate = 25; // Default to 'Interiérová štúdia'
+        function selectService(type) {
+            const optStudy = document.getElementById('opt-study');
+            const optProject = document.getElementById('opt-project');
+            // Remove selected state from both
+            optStudy.classList.remove('selected', 'border-primary', 'bg-[#fff0f5]', 'dark:bg-primary/10');
+            optProject.classList.remove('selected', 'border-primary', 'bg-[#fff0f5]', 'dark:bg-primary/10');
+            // Reset base styles for unselected
+            optStudy.classList.add('border-2', 'border-transparent');
+            optProject.classList.add('border-2', 'border-transparent');
+            // Add selected icon logic (simplified checkmark swap)
+            const checkIcon = `<div class="absolute top-4 right-4 w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center bg-primary"><span class="material-icons text-white text-sm">check</span></div>`;
+            const emptyIcon = `<div class="absolute top-4 right-4 w-6 h-6 rounded-full border-2 border-slate-300 dark:border-slate-600 flex items-center justify-center"></div>`;
+            if (type === 'study') {
+                currentRate = 25;
+                optStudy.classList.add('selected');
+                // Manually handling classes for visual feedback since we can't use React state
+                optStudy.style.borderColor = '#FF0060';
+                optProject.style.borderColor = 'transparent';
+                optStudy.querySelector('.absolute').outerHTML = checkIcon;
+                optProject.querySelector('.absolute').outerHTML = emptyIcon;
+            } else {
+                currentRate = 45;
+                optProject.classList.add('selected');
+                optProject.style.borderColor = '#FF0060';
+                optStudy.style.borderColor = 'transparent';
+                optProject.querySelector('.absolute').outerHTML = checkIcon;
+                optStudy.querySelector('.absolute').outerHTML = emptyIcon;
+            }
+            updatePrice();
+        }
+        function updatePrice() {
+            const slider = document.getElementById('area-slider');
+            const areaDisplay = document.getElementById('area-display');
+            const totalPriceDisplay = document.getElementById('total-price');
+            const area = parseInt(slider.value);
+            const total = area * currentRate;
+            areaDisplay.textContent = `${area} m²`;
+            // Format number with spaces
+            totalPriceDisplay.textContent = `${total.toLocaleString().replace(',', ' ')} €`;
+        }
+        // Initialize
+        updatePrice();
+
+        // Footer Year Logic
+        document.querySelectorAll('.current-year').forEach(el => {
+            el.textContent = new Date().getFullYear();
+        });
+    </script>
 </body></html>

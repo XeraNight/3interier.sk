@@ -99,108 +99,43 @@
 <div class="max-w-7xl mx-auto">
 <div class="space-y-24">
 
+<!-- Filter Buttons -->
+<div class="flex flex-wrap justify-center gap-4 mb-16">
+    <button class="filter-btn active px-6 py-2 rounded-full border border-primary bg-primary text-white font-bold transition-all hover:shadow-lg" data-filter="all">
+        Všetky
+    </button>
+    <button class="filter-btn px-6 py-2 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-slate-600 dark:text-slate-300 font-bold transition-all hover:border-primary hover:text-primary dark:hover:text-primary" data-filter="vizualizacie">
+        Vizualizácie
+    </button>
+    <button class="filter-btn px-6 py-2 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-slate-600 dark:text-slate-300 font-bold transition-all hover:border-primary hover:text-primary dark:hover:text-primary" data-filter="realizacie">
+        Realizácie
+    </button>
+    <button class="filter-btn px-6 py-2 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-slate-600 dark:text-slate-300 font-bold transition-all hover:border-primary hover:text-primary dark:hover:text-primary" data-filter="nabytok">
+        Nábytok na mieru
+    </button>
+</div>
+
 <!-- Vizualizácie Section -->
-<div id="vizualizacie" class="scroll-mt-32">
+<div id="vizualizacie" class="scroll-mt-32 filter-section">
     <h2 class="text-3xl font-extrabold dark:text-white mb-8 border-l-4 border-primary pl-4">Vizualizácie</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="group cursor-pointer">
-            <div class="relative rounded-2xl overflow-hidden shadow-xl mb-4 aspect-[4/3]">
-                <img alt="Vizualizácia kuchyne 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="img/portfolio/vizualizacie/kuchyna-1.jpg"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-            </div>
-            <h3 class="text-xl font-bold dark:text-white">Vizualizácia kuchyne</h3>
-        </div>
-        <div class="group cursor-pointer">
-            <div class="relative rounded-2xl overflow-hidden shadow-xl mb-4 aspect-[4/3]">
-                <img alt="Vizualizácia kuchyne 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="img/portfolio/vizualizacie/kuchyna-2.jpg"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-            </div>
-            <h3 class="text-xl font-bold dark:text-white">Moderná kuchyňa</h3>
-        </div>
-        <div class="group cursor-pointer">
-            <div class="relative rounded-2xl overflow-hidden shadow-xl mb-4 aspect-[4/3]">
-                <img alt="Vizualizácia kuchyne 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="img/portfolio/vizualizacie/kuchyna-3.jpg"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-            </div>
-            <h3 class="text-xl font-bold dark:text-white">Návrh interiéru</h3>
-        </div>
+        <!-- Projects will be loaded here dynamically -->
     </div>
 </div>
 
 <!-- Realizácie Section -->
-<div id="realizacie" class="scroll-mt-32">
+<div id="realizacie" class="scroll-mt-32 filter-section">
     <h2 class="text-3xl font-extrabold dark:text-white mb-8 border-l-4 border-primary pl-4">Realizácie</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="group cursor-pointer">
-            <div class="relative rounded-2xl overflow-hidden shadow-xl mb-4 aspect-[4/3]">
-                <img alt="Byt Košice 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="img/portfolio/realizacie/byt-kosice-1.jpg"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-            </div>
-            <h3 class="text-xl font-bold dark:text-white">Byt Košice - Obývačka</h3>
-        </div>
-        <div class="group cursor-pointer">
-            <div class="relative rounded-2xl overflow-hidden shadow-xl mb-4 aspect-[4/3]">
-                <img alt="Byt Košice 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="img/portfolio/realizacie/byt-kosice-2.jpg"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-            </div>
-            <h3 class="text-xl font-bold dark:text-white">Byt Košice - Detail</h3>
-        </div>
-        <div class="group cursor-pointer">
-            <div class="relative rounded-2xl overflow-hidden shadow-xl mb-4 aspect-[4/3]">
-                <img alt="Dom Košice 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="img/portfolio/realizacie/dom-kosice-1.jpg"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-            </div>
-            <h3 class="text-xl font-bold dark:text-white">Dom Košice</h3>
-        </div>
-        <div class="group cursor-pointer">
-            <div class="relative rounded-2xl overflow-hidden shadow-xl mb-4 aspect-[4/3]">
-                <img alt="Dom Košice 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="img/portfolio/realizacie/dom-kosice-2.jpg"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-            </div>
-            <h3 class="text-xl font-bold dark:text-white">Dom Košice - Interiér</h3>
-        </div>
-        <div class="group cursor-pointer">
-            <div class="relative rounded-2xl overflow-hidden shadow-xl mb-4 aspect-[4/3]">
-                <img alt="Dom Košice 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="img/portfolio/realizacie/dom-kosice-3.jpg"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-            </div>
-            <h3 class="text-xl font-bold dark:text-white">Dom Košice - Kuchyňa</h3>
-        </div>
-        <div class="group cursor-pointer">
-            <div class="relative rounded-2xl overflow-hidden shadow-xl mb-4 aspect-[4/3]">
-                <img alt="Byt Košice 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="img/portfolio/realizacie/byt-kosice-3.jpg"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-            </div>
-            <h3 class="text-xl font-bold dark:text-white">Byt Košice - Spálňa</h3>
-        </div>
+        <!-- Projects will be loaded here dynamically -->
     </div>
 </div>
 
 <!-- Nábytok na mieru Section -->
-<div id="nabytok" class="scroll-mt-32">
+<div id="nabytok" class="scroll-mt-32 filter-section">
     <h2 class="text-3xl font-extrabold dark:text-white mb-8 border-l-4 border-primary pl-4">Nábytok na mieru</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="group cursor-pointer">
-            <div class="relative rounded-2xl overflow-hidden shadow-xl mb-4 aspect-[4/3]">
-                <img alt="Nábytok 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="img/portfolio/nabytok/foto-1.jpg"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-            </div>
-            <h3 class="text-xl font-bold dark:text-white">Vstavaná skriňa</h3>
-        </div>
-        <div class="group cursor-pointer">
-            <div class="relative rounded-2xl overflow-hidden shadow-xl mb-4 aspect-[4/3]">
-                <img alt="Kuchyňa" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="img/portfolio/nabytok/kuchyna.jpg"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-            </div>
-            <h3 class="text-xl font-bold dark:text-white">Kuchynská linka na mieru</h3>
-        </div>
-        <div class="group cursor-pointer">
-            <div class="relative rounded-2xl overflow-hidden shadow-xl mb-4 aspect-[4/3]">
-                <img alt="Spálňa" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="img/portfolio/nabytok/spalna.jpg"/>
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-            </div>
-            <h3 class="text-xl font-bold dark:text-white">Spálňová zostava</h3>
-        </div>
+        <!-- Projects will be loaded here dynamically -->
     </div>
 </div>
 
@@ -287,15 +222,15 @@
                         Štúdio interiérového dizajnu so zameraním na prémiové realizácie a moderné technologické riešenia.
                     </p>
 <div class="flex gap-4">
-<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all" href="#">
-<i class="material-icons text-xl">facebook</i>
-</a>
-<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all" href="#">
-<i class="material-icons text-xl">photo_camera</i>
-</a>
-<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all" href="#">
-<i class="material-icons text-xl">business</i>
-</a>
+    <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all" href="https://www.facebook.com/3interierr" target="_blank" rel="noopener noreferrer">
+        <i class="material-icons text-xl">facebook</i>
+    </a>
+    <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all" href="https://www.instagram.com/3interierr/" target="_blank" rel="noopener noreferrer">
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    </a>
+    <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all" href="https://www.youtube.com/@3interier" target="_blank" rel="noopener noreferrer">
+        <i class="material-icons text-xl">smart_display</i>
+    </a>
 </div>
 </div>
 <div>
@@ -342,4 +277,80 @@
         el.textContent = new Date().getFullYear();
     });
 </script>
+    <script type="module">
+        import { portfolioData } from './js/portfolio-data.js';
+
+        const renderProjects = (category, containerId) => {
+            const container = document.querySelector(`#${containerId} .grid`);
+            if (!container) return;
+            
+            container.innerHTML = ''; // Clear existing content
+
+            const projects = portfolioData.filter(p => p.category === category);
+            
+            if (projects.length === 0) {
+                 container.innerHTML = '<p class="text-slate-500 dark:text-slate-400 col-span-3">Žiadne projekty v tejto kategórii.</p>';
+                 return;
+            }
+
+            projects.forEach(project => {
+                const card = document.createElement('div');
+                card.className = 'group cursor-pointer';
+                const imagePath = `img/portfolio/${category}/${project.folder}/${project.thumbnail}`;
+                
+                // Encode the path parts to handle spaces and special chars safely in URL, 
+                // but usually the browser handles encoded paths if we just set src.
+                // However, our data has raw filenames.
+                // We should encodeURI.
+                const safeImagePath = encodeURI(imagePath);
+
+                card.innerHTML = `
+                    <div class="relative rounded-2xl overflow-hidden shadow-xl mb-4 aspect-[4/3]">
+                        <img alt="${project.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="${safeImagePath}" loading="lazy"/>
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
+                    </div>
+                    <h3 class="text-xl font-bold dark:text-white capitalize">${project.title}</h3>
+                `;
+                
+                card.addEventListener('click', () => {
+                    const url = `project-detail.html?id=${project.id}&category=${category}`;
+                    window.location.href = url;
+                });
+                
+                container.appendChild(card);
+            });
+        };
+
+        renderProjects('vizualizacie', 'vizualizacie');
+        renderProjects('realizacie', 'realizacie');
+        renderProjects('nabytok', 'nabytok');
+
+        // Filter Logic
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const sections = document.querySelectorAll('.filter-section');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-primary', 'text-white', 'border-primary');
+                    b.classList.add('bg-white', 'dark:bg-white/5', 'text-slate-600', 'dark:text-slate-300', 'border-slate-200', 'dark:border-white/10');
+                });
+                btn.classList.remove('bg-white', 'dark:bg-white/5', 'text-slate-600', 'dark:text-slate-300', 'border-slate-200', 'dark:border-white/10');
+                btn.classList.add('bg-primary', 'text-white', 'border-primary');
+
+                const filter = btn.getAttribute('data-filter');
+
+                sections.forEach(section => {
+                    if (filter === 'all' || section.id === filter) {
+                        section.classList.remove('hidden');
+                        section.classList.add('block');
+                    } else {
+                        section.classList.add('hidden');
+                        section.classList.remove('block');
+                    }
+                });
+            });
+        });
+    </script>
 </body></html>
